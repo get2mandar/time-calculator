@@ -1,4 +1,4 @@
-package blog.panditmandar.timecalc;
+package blog.panditmandar.code.timecalc;
 
 public class SingleTime {
 

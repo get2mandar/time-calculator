@@ -1,4 +1,4 @@
-package blog.panditmandar.timecalc;
+package blog.panditmandar.code.timecalc;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
