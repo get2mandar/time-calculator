@@ -1,6 +1,13 @@
-package blog.panditmandar.code.timecalc;
+package blog.panditmandar.code.timecalc.process;
+
+import blog.panditmandar.code.timecalc.constant.SingleTime;
+import blog.panditmandar.code.timecalc.data.TimeDataRetriever;
 
 public class TimeCalculationByTimeDivide extends TimeCalculationProcessor {
+
+	public TimeCalculationByTimeDivide(TimeDataRetriever timeDataRetriever) {
+		super(timeDataRetriever);
+	}
 
 	@Override
 	protected SingleTime buildSingleTime(SingleTime sTime, String[] timeSplits, int index) {

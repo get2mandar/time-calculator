@@ -1,17 +1,31 @@
-package blog.panditmandar.code.timecalc;
+package blog.panditmandar.code.timecalc.process;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import blog.panditmandar.code.timecalc.constant.SingleTime;
+import blog.panditmandar.code.timecalc.data.TimeDataRetriever;
+
 public abstract class TimeCalculationProcessor {
+
+	private TimeDataRetriever timeDataRetriever;
 
 	private Set<SingleTime> timeSet;
 
-	public TimeCalculationProcessor() {
-		timeSet = new LinkedHashSet<>();
+	public TimeCalculationProcessor(TimeDataRetriever timeDataRetriever) {
+		this.timeDataRetriever = timeDataRetriever;
+		this.timeSet = new LinkedHashSet<>();
+		this.processTimeDataSource();
 	}
 
-	public void processTimeSources(String... timeSources) {
+	public void processTimeDataSource() {
+		if (timeDataRetriever.getTimeValueFormat().toString().equals("CSV")) {
+			String[] strings = timeDataRetriever.getSourceData().split(",");
+			processTimeDataSource(strings);
+		}
+	}
+
+	private void processTimeDataSource(String... timeSources) {
 
 		if (timeSources != null && timeSources.length > 0) {
 			for (String singleTime : timeSources) {
@@ -30,7 +44,7 @@ public abstract class TimeCalculationProcessor {
 	private SingleTime parseSingleTime(String singleTime) {
 		if (singleTime != null && singleTime.length() > 0) {
 
-			String[] timeSplits = singleTime.split(" ");
+			String[] timeSplits = singleTime.split(timeDataRetriever.getTimeValueSeperator().getSeperator());
 
 			SingleTime sTime = new SingleTime();
 
