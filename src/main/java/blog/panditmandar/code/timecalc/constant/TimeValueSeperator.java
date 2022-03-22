@@ -4,7 +4,7 @@ public enum TimeValueSeperator {
 
 	SPACE(" "), COLON(":");
 
-	public final String seperator;
+	private final String seperator;
 
 	private TimeValueSeperator(String seperator) {
 		this.seperator = seperator;

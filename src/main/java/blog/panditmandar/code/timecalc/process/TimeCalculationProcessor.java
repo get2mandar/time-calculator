@@ -13,14 +13,18 @@ public abstract class TimeCalculationProcessor {
 
 	public TimeCalculationProcessor(TimeDataRetriever timeDataRetriever) {
 		this.timeDataRetriever = timeDataRetriever;
-		this.timeSet = timeDataRetriever.retrieveTimeData(this);
+		this.timeDataRetriever.setCalcProcessor(this);
+		this.timeSet = timeDataRetriever.retrieveTimeData();
+	}
+
+	public TimeDataRetriever getTimeDataRetriever() {
+		return timeDataRetriever;
 	}
 
 	public SingleTime parseSingleTime(String singleTime) {
 		if (singleTime != null && singleTime.length() > 0) {
 
 			String[] timeSplits = singleTime.split(timeDataRetriever.getTimeValueSeperator().getSeperator());
-
 			SingleTime sTime = new SingleTime();
 
 			return buildSingleTime(sTime, timeSplits, 0);
@@ -40,7 +44,8 @@ public abstract class TimeCalculationProcessor {
 	 */
 	public SingleTime getTotalTime() {
 		SingleTime resultTime = new SingleTime();
-		for (SingleTime sTime : timeSet) {
+		System.out.println("this.timeSet:  " + this.timeSet);
+		for (SingleTime sTime : this.timeSet) {
 			resultTime.setSecond(resultTime.getSecond() + sTime.getSecond());
 			resultTime.setMinute(resultTime.getMinute() + sTime.getMinute());
 			resultTime.setHour(resultTime.getHour() + sTime.getHour());

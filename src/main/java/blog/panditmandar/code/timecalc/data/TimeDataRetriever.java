@@ -5,23 +5,28 @@ import java.util.Set;
 
 import blog.panditmandar.code.timecalc.constant.SingleTime;
 import blog.panditmandar.code.timecalc.constant.TimeValueSeperator;
+import blog.panditmandar.code.timecalc.process.TimeCalculationProcessor;
 
 public abstract class TimeDataRetriever implements DataRetriever {
 
 	private String sourceData;
-	protected DataReader dataReader;
+	protected SourceReader dataReader;
 	private TimeValueSeperator timeValueSeperator;
+
+	private TimeCalculationProcessor calcProcessor;
 
 	private Set<SingleTime> timeSet;
 
-	protected TimeDataRetriever(String sourceData, DataReader dataReader, TimeValueSeperator timeValueSeperator) {
+	protected TimeDataRetriever(String sourceData, SourceReader dataReader, TimeValueSeperator timeValueSeperator) {
+//		System.out.println("TimeDataRetriever");
 		this.sourceData = sourceData;
+//		System.out.println("this.sourceData " + this.sourceData);
 		this.dataReader = dataReader;
 		this.timeValueSeperator = timeValueSeperator;
 		this.timeSet = new LinkedHashSet<>();
 	}
 
-	protected DataReader getDataReader() {
+	protected SourceReader getDataReader() {
 		return dataReader;
 	}
 
@@ -35,5 +40,13 @@ public abstract class TimeDataRetriever implements DataRetriever {
 
 	public TimeValueSeperator getTimeValueSeperator() {
 		return timeValueSeperator;
+	}
+
+	public TimeCalculationProcessor getCalcProcessor() {
+		return calcProcessor;
+	}
+
+	public void setCalcProcessor(TimeCalculationProcessor calcProcessor) {
+		this.calcProcessor = calcProcessor;
 	}
 }

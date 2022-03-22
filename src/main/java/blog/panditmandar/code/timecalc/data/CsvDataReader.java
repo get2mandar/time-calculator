@@ -1,6 +1,9 @@
 package blog.panditmandar.code.timecalc.data;
 
-public class CsvDataReader implements DataReader {
+import org.springframework.stereotype.Component;
+
+@Component
+public class CsvDataReader implements SourceReader {
 
 	@Override
 	public String[] readSourceData(String sourceData) {
