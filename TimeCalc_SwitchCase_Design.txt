@@ -1,0 +1,65 @@
+switch (read_source)
+{
+    case "FILE":
+        switch (file_format)
+        {
+            case "CSV":
+                switch (time_seperator)
+                {
+                    case "SPACE":
+                        csvSpaceHandler.Execute();
+                        break;
+                    case "COLON":
+                        csvColonHandler.Execute();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "JSON":
+                switch (time_seperator)
+                {
+                    case "SPACE":
+                        csvSpaceHandler.Execute();
+                        break;
+                    case "COLON":
+                        csvColonHandler.Execute();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+        }
+        break;
+    case "ARGUMENT":
+        switch (file_format)
+        {
+            case "CSV":
+                switch (time_seperator)
+                {
+                    case "SPACE":
+                        csvSpaceHandler.Execute();
+                        break;
+                    case "COLON":
+                        csvColonHandler.Execute();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "JSON":
+                switch (time_seperator)
+                {
+                    case "SPACE":
+                        jsonSpaceHandler.Execute();
+                        break;
+                    case "COLON":
+                        jsonColonHandler.Execute();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+        }
+        break;
+}
